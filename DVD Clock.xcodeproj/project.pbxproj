@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F1179AD29FB4D35009045ED /* DVD_ClockView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F1179AC29FB4D35009045ED /* DVD_ClockView.h */; };
-		8F1179AF29FB4D35009045ED /* DVD_ClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1179AE29FB4D35009045ED /* DVD_ClockView.m */; };
+		8F1179BB29FB4EAD009045ED /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1179BA29FB4EAD009045ED /* main.swift */; };
+		8F1179BE29FB4FD0009045ED /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F1179BD29FB4FD0009045ED /* ScreenSaver.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8F1179A929FB4D35009045ED /* DVD Clock.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DVD Clock.saver"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F1179AC29FB4D35009045ED /* DVD_ClockView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DVD_ClockView.h; sourceTree = "<group>"; };
-		8F1179AE29FB4D35009045ED /* DVD_ClockView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DVD_ClockView.m; sourceTree = "<group>"; };
+		8F1179BA29FB4EAD009045ED /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		8F1179BD29FB4FD0009045ED /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -22,6 +22,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F1179BE29FB4FD0009045ED /* ScreenSaver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +34,7 @@
 			children = (
 				8F1179AB29FB4D35009045ED /* DVD Clock */,
 				8F1179AA29FB4D35009045ED /* Products */,
+				8F1179BC29FB4FD0009045ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,10 +49,17 @@
 		8F1179AB29FB4D35009045ED /* DVD Clock */ = {
 			isa = PBXGroup;
 			children = (
-				8F1179AC29FB4D35009045ED /* DVD_ClockView.h */,
-				8F1179AE29FB4D35009045ED /* DVD_ClockView.m */,
+				8F1179BA29FB4EAD009045ED /* main.swift */,
 			);
 			path = "DVD Clock";
+			sourceTree = "<group>";
+		};
+		8F1179BC29FB4FD0009045ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8F1179BD29FB4FD0009045ED /* ScreenSaver.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,7 +69,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F1179AD29FB4D35009045ED /* DVD_ClockView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +104,7 @@
 				TargetAttributes = {
 					8F1179A829FB4D35009045ED = {
 						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -132,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F1179AF29FB4D35009045ED /* DVD_ClockView.m in Sources */,
+				8F1179BB29FB4EAD009045ED /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +260,7 @@
 		8F1179B329FB4D35009045ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -263,6 +273,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Om-Patel.DVD-Clock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Debug;
@@ -270,6 +282,7 @@
 		8F1179B429FB4D35009045ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -282,6 +295,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Om-Patel.DVD-Clock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
