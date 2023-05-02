@@ -11,9 +11,10 @@ import ScreenSaver
 class MyScreenSaverView: ScreenSaverView {
     
     let clockLabel = NSTextField()
+    let backgroundView = NSView()
 
     var position = CGPoint.zero
-    var velocity = CGPoint(x: 1, y: 1)
+    var velocity = CGPoint(x: 3, y: 2)
 
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
@@ -22,13 +23,19 @@ class MyScreenSaverView: ScreenSaverView {
         clockLabel.stringValue = getCurrentTime()
         clockLabel.font = NSFont.systemFont(ofSize: 100)
         clockLabel.textColor = NSColor.white
-        clockLabel.backgroundColor = NSColor.clear
         clockLabel.isEditable = false
         clockLabel.isSelectable = false
         clockLabel.isBordered = false
         clockLabel.sizeToFit()
         
-        // Add the clock label to the view
+        // Set up the background view
+        backgroundView.frame = clockLabel.frame.insetBy(dx: -20, dy: -20)
+        backgroundView.wantsLayer = true
+        backgroundView.layer?.backgroundColor = NSColor.black.withAlphaComponent(0.3).cgColor
+        backgroundView.layer?.cornerRadius = 100
+        
+        // Add the clock label and background view to the view
+        self.addSubview(backgroundView)
         self.addSubview(clockLabel)
         
         // Set the animation time interval to 60 Hertz
@@ -47,8 +54,8 @@ class MyScreenSaverView: ScreenSaverView {
         
     func getCurrentTime() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter.string(from: Date())
+        formatter.dateFormat = "h:mm"
+        return formatter.string(from: Date()) + " " + "PM"
     }
     
     override func animateOneFrame() {
@@ -57,11 +64,11 @@ class MyScreenSaverView: ScreenSaverView {
         position.y += velocity.y
         
         // Bounce off the edges of the screen
-        if position.x < 0 || position.x + clockLabel.frame.width > frame.width {
+        if position.x < 0 || position.x + clockLabel.frame.width >= frame.width {
             velocity.x *= -1
             clockLabel.textColor = NSColor.random()
         }
-        if position.y < 0 || position.y + clockLabel.frame.height > frame.height {
+        if position.y < 0 || position.y + clockLabel.frame.height >= frame.height {
             velocity.y *= -1
             clockLabel.textColor = NSColor.random()
         }
